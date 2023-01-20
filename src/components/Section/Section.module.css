@@ -1,0 +1,10 @@
+.feedback {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    text-align: center;
+    margin: 50px auto;
+    background-color: antiquewhite;
+    color: darkblue;
+    border-radius: 15px;
+}
