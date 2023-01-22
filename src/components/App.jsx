@@ -4,6 +4,7 @@ import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -55,3 +56,8 @@ export class App extends Component {
     );
   }
 }
+App.propTypes = {
+  handleClick: PropTypes.func,
+  countTotalFeedback: PropTypes.func,
+  countPositiveFeedbackPercentage: PropTypes.func,
+};
