@@ -4,7 +4,6 @@ import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
-import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -19,8 +18,6 @@ export class App extends Component {
   handleClick = e => {
     const { name } = e.target;
     this.setState(state => ({ [name]: state[name] + 1 }));
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
   };
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
@@ -32,6 +29,7 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const sum = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
 
     return (
       <div>
@@ -47,8 +45,8 @@ export class App extends Component {
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              sum={sum}
+              positivePercentage={positivePercentage}
             />
           )}
         </Section>
@@ -56,8 +54,3 @@ export class App extends Component {
     );
   }
 }
-App.propTypes = {
-  handleClick: PropTypes.func,
-  countTotalFeedback: PropTypes.func,
-  countPositiveFeedbackPercentage: PropTypes.func,
-};
